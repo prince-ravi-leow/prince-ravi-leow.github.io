@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://princeravileow.com/sitemap-index.xml

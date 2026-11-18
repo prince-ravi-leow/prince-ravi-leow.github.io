@@ -1,5 +1,7 @@
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://prince-ravi-leow.github.io",
+  site: "https://princeravileow.com",
+  integrations: [sitemap()],
 });
