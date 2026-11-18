@@ -12,7 +12,7 @@ page-layout: full
 # Prince Ravi Leow
 
 ::: {.role}
-PhD student @ Health Data Science & AI (University of Copenhagen)
+PhD student @ Section for Health Data Science & AI (University of Copenhagen)
 :::
 
 ::: {.links}
