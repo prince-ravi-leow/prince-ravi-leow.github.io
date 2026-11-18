@@ -7,10 +7,15 @@ website:
   title: "Prince Ravi Leow"
   description: "PhD student building computer vision systems that measure animal behaviour and health."
   page-footer:
-    center: "Built with [Quarto](https://quarto.org/)"
+    center: "© 2026 Prince Ravi Leow · Built with [Quarto](https://quarto.org/)"
 
 format:
   html:
     theme: [cosmo, styles.scss]
     toc: false
     link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap">

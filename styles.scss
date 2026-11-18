@@ -1,59 +1,190 @@
 /*-- scss:defaults --*/
-$font-size-root: 17px;
-$link-color: #1a5fb4;
-$headings-font-weight: 600;
+// Figma "Soft Whisper" pairing for misty blue
+$misty-blue: #b5c7eb;
+$soft-blue: #94aee3;
+$blue-grey: #94a3c0;
+$slate: #60697c;
+$page: #f7f8fc;
+$ink: #1b1d22;
+$muted: #535b6c;
+$rule: #d9deea;
+$deep-blue: #315db6;
+$dark-grey: #3f4553;
+
+$body-bg: $page;
+$body-color: $ink;
+$link-color: $ink;
+$font-size-root: 18px;
+$font-family-sans-serif: "Open Sans", system-ui, sans-serif;
+$headings-font-family: "Montserrat", system-ui, sans-serif;
+$headings-font-weight: 700;
 
 /*-- scss:rules --*/
-// Keep the page narrow and airy
-.quarto-about-trestles {
-  max-width: 980px;
-  margin: 3rem auto 0;
-
-  .about-entity .about-image {
-    width: 13em;
-    height: 13em;
-  }
-
-  .about-entity .subtitle {
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-
-  .about-contents h2 {
-    font-size: 1.25rem;
-    border-bottom: none;
-    margin-top: 2.2rem;
-  }
-}
-
-.about-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 1.2rem 0;
-  border-radius: 4px;
-}
-
-// Definition lists used for work and writing entries
-dl dt {
-  font-weight: 600;
-  margin-top: 1rem;
-}
-
-dl dd {
-  margin-left: 0;
-  color: #444;
+body {
+  background-color: $page;
+  background-image:
+    radial-gradient(60rem 38rem at 5% -6rem, rgba($misty-blue, 0.95), rgba($misty-blue, 0.35) 40%, rgba($misty-blue, 0.08) 65%, transparent 80%),
+    radial-gradient(46rem 34rem at 100% -4rem, rgba($soft-blue, 0.55), rgba($soft-blue, 0.2) 40%, rgba($soft-blue, 0.05) 65%, transparent 80%),
+    radial-gradient(40rem 26rem at 60% 20rem, rgba($blue-grey, 0.2), rgba($blue-grey, 0.07) 45%, transparent 75%);
+  background-repeat: no-repeat;
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: $soft-blue;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
 
   &:hover {
-    text-decoration: underline;
+    color: $deep-blue;
+  }
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+
+  > p {
+    margin: 0;
+    flex: none;
+  }
+
+  .avatar {
+    display: block;
+    width: clamp(6.5rem, 18vw, 11rem);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid $dark-grey;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.5rem;
+  }
+
+  .role p {
+    font-size: 1.05rem;
+    color: $muted;
+    margin: 0 0 1rem;
+  }
+
+  .links p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+  }
+
+  .links a {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+
+    .bi {
+      color: $slate;
+      margin-right: 0.3em;
+    }
+  }
+}
+
+.lede p {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  max-width: 34em;
+  margin: clamp(2rem, 5vw, 3.5rem) 0 1.5rem;
+}
+
+.hero-video {
+  margin: 0;
+
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid $ink;
+  }
+
+  figcaption {
+    font-size: 0.85rem;
+    color: $muted;
+    margin-top: 0.6rem;
+  }
+}
+
+.home h2 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid $rule;
+  padding-bottom: 0.5rem;
+  margin: clamp(3rem, 7vw, 4.5rem) 0 2.75rem;
+}
+
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 2.75rem 1.5rem;
+}
+
+.track {
+  --track: #{$ink};
+  position: relative;
+  border: 1.5px solid var(--track);
+  padding: 1.25rem 1.25rem 1.1rem;
+
+  .track-id {
+    position: absolute;
+    top: 0;
+    left: -1.5px;
+    transform: translateY(-100%);
+    background: var(--track);
+    color: $ink;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  a {
+    text-decoration-color: var(--track);
+
+    &:hover {
+      color: $ink;
+      background: color-mix(in srgb, var(--track) 25%, transparent);
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.track-orange { --track: #{$soft-blue}; }
+.track-green { --track: #{$blue-grey}; }
+.track-pink { --track: #{$misty-blue}; }
+.track-blue { --track: #{$slate}; }
+.track-blue .track-id { color: #fff; }
+
+@media (max-width: 560px) {
+  .masthead {
+    align-items: flex-start;
   }
 }
 
 .nav-footer {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.85rem;
+  color: $muted;
+  margin-top: clamp(3rem, 7vw, 5rem);
+  border-top: none;
 }
