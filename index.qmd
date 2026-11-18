@@ -12,7 +12,7 @@ page-layout: full
 # Prince Ravi Leow
 
 ::: {.role}
-PhD student · Health Data Science & AI · University of Copenhagen
+PhD student @ Health Data Science & AI (University of Copenhagen)
 :::
 
 ::: {.links}
@@ -20,13 +20,11 @@ PhD student · Health Data Science & AI · University of Copenhagen
 [<i class="bi bi-envelope"></i> Email](mailto:prince.leow@sund.ku.dk)
 [<i class="bi bi-github"></i> GitHub](https://github.com/prince-ravi-leow)
 [<i class="bi bi-linkedin"></i> LinkedIn](https://www.linkedin.com/in/prince-ravi-leow)
-[<i class="bi bi-mortarboard"></i> Google Scholar](https://scholar.google.com/citations?user=v0wjZzoAAAAJ&hl=en)
+[<i class="bi bi-mortarboard"></i> [Google]{.wide-only} Scholar](https://scholar.google.com/citations?user=v0wjZzoAAAAJ&hl=en)
 [<i class="bi bi-person-badge"></i> ORCiD](https://orcid.org/0009-0008-8997-2020)
 :::
 ::::
 :::::
-
-<!-- # I teach computers to watch chickens. -->
 
 ::: {.lede}
 I build computer vision systems that measure animal behaviour and health at scale.
@@ -35,11 +33,20 @@ I build computer vision systems that measure animal behaviour and health at scal
 ```{=html}
 <figure class="hero-video">
   <video autoplay loop muted playsinline controls
-    aria-label="Three synchronised panels of broiler chicks in a pen: raw video, optical flow, and SAM 3.1 tracks of individual birds">
-    <source src="assets/flow_vs_tracks_vert.mp4" media="(max-width: 700px)" type="video/mp4">
-    <source src="assets/flow_vs_tracks_horiz.mp4" type="video/mp4">
-  </video>
+    aria-label="Three synchronised panels of broiler chicks in a pen: raw video, optical flow, and SAM 3.1 tracks of individual birds"
+    data-wide="assets/flow_vs_tracks_horiz.mp4" data-tall="assets/flow_vs_tracks_vert.mp4"></video>
 </figure>
+<script>
+  (() => {
+    const video = document.querySelector(".hero-video video");
+    const narrow = window.matchMedia("(max-width: 700px)");
+    const pick = () => {
+      video.src = narrow.matches ? video.dataset.tall : video.dataset.wide;
+    };
+    pick();
+    narrow.addEventListener("change", pick);
+  })();
+</script>
 ```
 
 ## Selected work
@@ -60,7 +67,7 @@ A computer vision pipeline that classifies play behaviour in poultry from video.
 ### [Detecting infection from video](https://doi.org/10.1098/rsos.250151)
 
 We showed that deep learning on ordinary video can measure *E. coli* infection in broiler chickens ([Royal Society Open Science, 2025](https://doi.org/10.1098/rsos.250151)). A talk on this work won [Best Lightning Talk at Health Data Science Day 2025](https://lnkd.in/p/exNUscXH).
-<!-- For the multi-pathogen trials that followed, I built the multi-camera capture system and ran the experiments: about 170 birds and 10 TB of footage.  -->
+
 :::
 
 ::::

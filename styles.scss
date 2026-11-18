@@ -21,12 +21,8 @@ $headings-font-weight: 700;
 
 /*-- scss:rules --*/
 body {
-  background-color: $page;
-  background-image:
-    radial-gradient(60rem 38rem at 5% -6rem, rgba($misty-blue, 0.95), rgba($misty-blue, 0.35) 40%, rgba($misty-blue, 0.08) 65%, transparent 80%),
-    radial-gradient(46rem 34rem at 100% -4rem, rgba($soft-blue, 0.55), rgba($soft-blue, 0.2) 40%, rgba($soft-blue, 0.05) 65%, transparent 80%),
-    radial-gradient(40rem 26rem at 60% 20rem, rgba($blue-grey, 0.2), rgba($blue-grey, 0.07) 45%, transparent 75%);
-  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 a {
@@ -69,7 +65,6 @@ a {
 
   .role p {
     font-size: 1.05rem;
-    color: $muted;
     margin: 0 0 1rem;
   }
 
@@ -176,9 +171,64 @@ a {
 .track-blue { --track: #{$slate}; }
 .track-blue .track-id { color: #fff; }
 
-@media (max-width: 560px) {
+@media (max-width: 700px) {
   .masthead {
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .avatar {
+      width: 10.5rem;
+    }
+
+    .wide-only {
+      display: none;
+    }
+
+    .identity {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 8.6vw, 2.6rem);
+    }
+
+    .links p {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .links a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.85rem 0.25rem 0.7rem;
+      font-size: 0.75rem;
+      white-space: normal;
+      background: mix($misty-blue, #fff, 12%);
+      border-radius: 1rem;
+      box-shadow: 0 1px 2px rgba(#000, 0.3), 0 1px 3px 1px rgba(#000, 0.15);
+      transition: box-shadow 0.15s, background-color 0.15s;
+
+      .bi {
+        font-size: 1.7rem;
+        line-height: 1;
+        margin: 0;
+        color: $deep-blue;
+      }
+
+      &:hover {
+        color: $ink;
+        box-shadow: 0 1px 2px rgba(#000, 0.3), 0 2px 6px 2px rgba(#000, 0.15);
+      }
+
+      &:active {
+        background: mix($misty-blue, #fff, 35%);
+        box-shadow: 0 1px 2px rgba(#000, 0.3), 0 1px 3px 1px rgba(#000, 0.15);
+      }
+    }
   }
 }
 
