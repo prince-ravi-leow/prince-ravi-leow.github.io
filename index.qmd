@@ -1,0 +1,58 @@
+---
+title: "Prince Ravi Leow"
+subtitle: "PhD student · Health Data Science & AI · University of Copenhagen"
+pagetitle: "Prince Ravi Leow"
+about:
+  template: trestles
+  image: assets/avatar.png
+  image-shape: round
+  image-alt: "Prince Ravi Leow standing next to a research poster"
+  links:
+    - icon: file-earmark-person
+      text: CV
+      href: assets/cv.pdf
+    - icon: envelope
+      text: Email
+      href: mailto:prince.leow@sund.ku.dk
+    - icon: github
+      text: GitHub
+      href: https://github.com/prince-ravi-leow
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/prince-ravi-leow
+    - icon: mortarboard
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=v0wjZzoAAAAJ&hl=en
+    - icon: person-badge
+      text: ORCID
+      href: https://orcid.org/0009-0008-8997-2020
+---
+
+# About me
+I build computer vision systems that measure animal behaviour and health at scale.
+
+```{=html}
+<video class="about-video" src="assets/flow_vs_tracks_vert.mp4" autoplay loop muted playsinline controls
+  aria-label="Three synchronised panels of broiler chicks in a pen: raw video, optical flow, and SAM 3.1 tracks of individual birds"></video>
+```
+
+# Selected work
+### [PlayClass](https://github.com/sbhattlab/PlayClass)
+<!-- **[PlayClass](https://github.com/sbhattlab/PlayClass)** -->
+- A computer vision pipeline that classifies play behaviour in poultry from video.
+- Presented at the [CV4Animals Workshop @ CVPR 2026](https://www.cv4animals.com/) ([paper](https://doi.org/10.48550/arXiv.2605.27304)) and featured in [GitHub Octoverse 2026](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/).
+- Unpublished manuscript currently under review at PLOS One.
+
+### Detecting infection from video
+<!-- **Detecting infection from video** -->
+- We showed that deep learning on ordinary video can measure *E. coli* infection in broiler chickens ([Royal Society Open Science, 2025](https://doi.org/10.1098/rsos.250151)). 
+- A talk on this work won [Best Lightning Talk at Health Data Science Day 2025](https://lnkd.in/p/exNUscXH).
+<!-- For the multi-pathogen trials that followed, I built the multi-camera capture system and ran the experiments: about 170 birds and 10 TB of footage.  -->
+
+
+# Writing
+**[A Byte Of Health](https://byteofhealth.substack.com/)**
+: A newsletter on health and life science breakthroughs.
+
+**[Notes on Quarto Pub](https://prince-ravi-leow.quarto.pub/)**
+: Occasional longer pieces.

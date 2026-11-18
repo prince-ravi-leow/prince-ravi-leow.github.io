@@ -1,0 +1,59 @@
+/*-- scss:defaults --*/
+$font-size-root: 17px;
+$link-color: #1a5fb4;
+$headings-font-weight: 600;
+
+/*-- scss:rules --*/
+// Keep the page narrow and airy
+.quarto-about-trestles {
+  max-width: 980px;
+  margin: 3rem auto 0;
+
+  .about-entity .about-image {
+    width: 13em;
+    height: 13em;
+  }
+
+  .about-entity .subtitle {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .about-contents h2 {
+    font-size: 1.25rem;
+    border-bottom: none;
+    margin-top: 2.2rem;
+  }
+}
+
+.about-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.2rem 0;
+  border-radius: 4px;
+}
+
+// Definition lists used for work and writing entries
+dl dt {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+dl dd {
+  margin-left: 0;
+  color: #444;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.nav-footer {
+  font-size: 0.8rem;
+  color: #888;
+}
