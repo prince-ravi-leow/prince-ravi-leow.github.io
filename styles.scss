@@ -1,17 +1,16 @@
 /*-- scss:defaults --*/
-// Figma "Soft Whisper" pairing for misty blue
+// Figma "split" colour harmony for misty blue
 $misty-blue: #b5c7eb;
-$soft-blue: #94aee3;
-$blue-grey: #94a3c0;
-$slate: #60697c;
-$page: #f7f8fc;
+$peach: #ebbeb5;
+$lime: #e2ebb5;
 $ink: #1b1d22;
 $muted: #535b6c;
-$rule: #d9deea;
+$rule: rgba($ink, 0.18);
 $deep-blue: #315db6;
+$terracotta: darken($peach, 36%);
 $dark-grey: #3f4553;
 
-$body-bg: $page;
+$body-bg: #fff;
 $body-color: $ink;
 $link-color: $ink;
 $font-size-root: 18px;
@@ -20,14 +19,9 @@ $headings-font-family: "Montserrat", system-ui, sans-serif;
 $headings-font-weight: 700;
 
 /*-- scss:rules --*/
-body {
-  min-height: 100vh;
-  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
-
 a {
   text-decoration: underline;
-  text-decoration-color: $soft-blue;
+  text-decoration-color: darken($peach, 18%);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 
@@ -82,7 +76,7 @@ a {
     white-space: nowrap;
 
     .bi {
-      color: $slate;
+      color: $terracotta;
       margin-right: 0.3em;
     }
   }
@@ -126,8 +120,10 @@ a {
 
 .track {
   --track: #{$ink};
+  --track-deep: #{$ink};
   position: relative;
-  border: 1.5px solid var(--track);
+  border: 1.5px solid var(--track-deep);
+  background: rgba(#fff, 0.5);
   padding: 1.25rem 1.25rem 1.1rem;
 
   .track-id {
@@ -136,6 +132,8 @@ a {
     left: -1.5px;
     transform: translateY(-100%);
     background: var(--track);
+    border: 1.5px solid var(--track-deep);
+    border-bottom: none;
     color: $ink;
     font-size: 0.8rem;
     font-weight: 700;
@@ -152,11 +150,11 @@ a {
   }
 
   a {
-    text-decoration-color: var(--track);
+    text-decoration-color: var(--track-deep);
 
     &:hover {
       color: $ink;
-      background: color-mix(in srgb, var(--track) 25%, transparent);
+      background: var(--track);
     }
   }
 
@@ -165,11 +163,9 @@ a {
   }
 }
 
-.track-orange { --track: #{$soft-blue}; }
-.track-green { --track: #{$blue-grey}; }
-.track-pink { --track: #{$misty-blue}; }
-.track-blue { --track: #{$slate}; }
-.track-blue .track-id { color: #fff; }
+.track-blue { --track: #{$misty-blue}; --track-deep: #{darken($misty-blue, 25%)}; }
+.track-peach { --track: #{$peach}; --track-deep: #{darken($peach, 25%)}; }
+.track-lime { --track: #{$lime}; --track-deep: #{darken($lime, 35%)}; }
 
 @media (max-width: 700px) {
   .masthead {
@@ -207,7 +203,7 @@ a {
       padding: 0.85rem 0.25rem 0.7rem;
       font-size: 0.75rem;
       white-space: normal;
-      background: mix($misty-blue, #fff, 12%);
+      background: rgba(#fff, 0.8);
       border-radius: 1rem;
       box-shadow: 0 1px 2px rgba(#000, 0.3), 0 1px 3px 1px rgba(#000, 0.15);
       transition: box-shadow 0.15s, background-color 0.15s;
@@ -216,7 +212,7 @@ a {
         font-size: 1.7rem;
         line-height: 1;
         margin: 0;
-        color: $deep-blue;
+        color: $terracotta;
       }
 
       &:hover {
@@ -225,7 +221,7 @@ a {
       }
 
       &:active {
-        background: mix($misty-blue, #fff, 35%);
+        background: $peach;
         box-shadow: 0 1px 2px rgba(#000, 0.3), 0 1px 3px 1px rgba(#000, 0.15);
       }
     }

@@ -53,7 +53,7 @@ I build computer vision systems that measure animal behaviour and health at scal
 
 :::: {.tracks}
 
-::: {.track .track-orange}
+::: {.track .track-blue}
 [CVPR 2026 workshop]{.track-id}
 
 ### [PlayClass](https://github.com/sbhattlab/PlayClass)
@@ -61,7 +61,7 @@ I build computer vision systems that measure animal behaviour and health at scal
 A computer vision pipeline that classifies play behaviour in poultry from video. Presented at the [CV4Animals Workshop @ CVPR 2026](https://www.cv4animals.com/) ([paper](https://doi.org/10.48550/arXiv.2605.27304)) and featured in [GitHub Octoverse 2026](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/). A manuscript is under review at PLOS One.
 :::
 
-::: {.track .track-green}
+::: {.track .track-peach}
 [Royal Society Open Science 2025]{.track-id}
 
 ### [Detecting infection from video](https://doi.org/10.1098/rsos.250151)
@@ -76,7 +76,7 @@ We showed that deep learning on ordinary video can measure *E. coli* infection i
 
 :::: {.tracks}
 
-::: {.track .track-pink}
+::: {.track .track-lime}
 [Newsletter]{.track-id}
 
 ### [A Byte Of Health](https://byteofhealth.substack.com/)
