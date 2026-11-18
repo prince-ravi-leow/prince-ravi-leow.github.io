@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import avatar from "../assets/avatar.png";
+import cvIcon from "bootstrap-icons/icons/person-vcard.svg?raw";
+import emailIcon from "bootstrap-icons/icons/envelope.svg?raw";
+import githubIcon from "bootstrap-icons/icons/github.svg?raw";
+import linkedinIcon from "bootstrap-icons/icons/linkedin.svg?raw";
+import scholarIcon from "bootstrap-icons/icons/mortarboard.svg?raw";
+import orcidIcon from "../icons/orcid.svg?raw";
+
+const links = [
+  { icon: cvIcon, label: "CV", href: `${import.meta.env.BASE_URL}cv.pdf` },
+  { icon: emailIcon, label: "Email", href: "mailto:prince.leow@sund.ku.dk" },
+  { icon: githubIcon, label: "GitHub", href: "https://github.com/prince-ravi-leow" },
+  { icon: linkedinIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/prince-ravi-leow" },
+  {
+    icon: scholarIcon,
+    label: "Scholar",
+    wideOnlyPrefix: "Google",
+    href: "https://scholar.google.com/citations?user=v0wjZzoAAAAJ&hl=en",
+  },
+  { icon: orcidIcon, label: "ORCID", href: "https://orcid.org/0009-0008-8997-2020" },
+];
+---
+
+<header class="masthead">
+  <Image
+    class="avatar"
+    src={avatar}
+    alt="Prince Ravi Leow standing next to a research poster"
+    width={352}
+    height={352}
+    loading="eager"
+  />
+  <div class="identity">
+    <h1>Prince Ravi Leow</h1>
+    <p class="role">PhD student @ Section for Health Data Science & AI (University of Copenhagen)</p>
+    <nav class="links" aria-label="Profiles and contact">
+      {
+        links.map(({ icon, label, wideOnlyPrefix, href }) => (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            <span class="icon" aria-hidden="true" set:html={icon.trim()} />
+            <span>
+              {wideOnlyPrefix && <span class="wide-only">{wideOnlyPrefix} </span>}
+              {label}
+            </span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

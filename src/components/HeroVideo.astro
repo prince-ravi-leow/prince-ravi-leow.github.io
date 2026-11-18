@@ -1,0 +1,24 @@
+---
+import wide from "../assets/flow_vs_tracks_horiz.mp4?url";
+import tall from "../assets/flow_vs_tracks_vert.mp4?url";
+---
+
+<figure class="hero-video">
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    controls
+    aria-label="Three synchronised panels of broiler chicks in a pen: raw video, optical flow, and SAM 3.1 tracks of individual birds"
+  >
+    <source src={tall} media="(max-width: 700px)" type="video/mp4" />
+    <source src={wide} type="video/mp4" />
+  </video>
+</figure>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>(".hero-video video");
+  // Browsers only evaluate <source media> on load.
+  window.matchMedia("(max-width: 700px)").addEventListener("change", () => video?.load());
+</script>

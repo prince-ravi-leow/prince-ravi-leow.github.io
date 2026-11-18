@@ -1,0 +1,18 @@
+---
+import ExternalLink from "./ExternalLink.astro";
+
+interface Props {
+  tag: string;
+  title: string;
+  href: string;
+  colour: "blue" | "peach" | "lime";
+}
+
+const { tag, title, href, colour } = Astro.props;
+---
+
+<article class:list={["track", `track-${colour}`]}>
+  <span class="track-id">{tag}</span>
+  <h3><ExternalLink href={href}>{title}</ExternalLink></h3>
+  <slot />
+</article>

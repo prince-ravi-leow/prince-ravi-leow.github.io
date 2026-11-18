@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import Masthead from "../components/Masthead.astro";
+import HeroVideo from "../components/HeroVideo.astro";
+import Card from "../components/Card.astro";
+import ExternalLink from "../components/ExternalLink.astro";
+---
+
+<Base
+  title="Prince Ravi Leow"
+  description="PhD student building computer vision systems that measure animal behaviour and health."
+>
+  <Masthead />
+
+  <p class="lede">I build computer vision systems that measure animal behaviour and health at scale.</p>
+
+  <HeroVideo />
+
+  <h2>Selected work</h2>
+  <div class="tracks">
+    <Card tag="CVPR 2026 workshop" title="PlayClass" href="https://github.com/sbhattlab/PlayClass" colour="blue">
+      <p>
+        A computer vision pipeline that classifies play behaviour in poultry from video. Presented at the{" "}
+        <ExternalLink href="https://www.cv4animals.com/">CV4Animals Workshop @ CVPR 2026</ExternalLink>{" "}
+        (<ExternalLink href="https://doi.org/10.48550/arXiv.2605.27304">paper</ExternalLink>) and featured in{" "}
+        <ExternalLink
+          href="https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+          >GitHub Octoverse 2026</ExternalLink
+        >. A manuscript is under review at PLOS One.
+      </p>
+    </Card>
+    <Card
+      tag="Royal Society Open Science 2025"
+      title="Detecting infection from video"
+      href="https://doi.org/10.1098/rsos.250151"
+      colour="peach"
+    >
+      <p>
+        We showed that deep learning on ordinary video can measure <em>E. coli</em> infection in broiler chickens
+        (<ExternalLink href="https://doi.org/10.1098/rsos.250151">Royal Society Open Science, 2025</ExternalLink>). A
+        talk on this work won{" "}
+        <ExternalLink href="https://lnkd.in/p/exNUscXH"
+          >Best Lightning Talk at Health Data Science Day 2025</ExternalLink
+        >.
+      </p>
+    </Card>
+  </div>
+
+  <h2>Writing</h2>
+  <div class="tracks">
+    <Card tag="Newsletter" title="A Byte Of Health" href="https://byteofhealth.substack.com/" colour="lime">
+      <p>A newsletter on health and life science breakthroughs.</p>
+    </Card>
+    <Card tag="Notes" title="Notes on Quarto Pub" href="https://prince-ravi-leow.quarto.pub/" colour="blue">
+      <p>Occasional longer pieces.</p>
+    </Card>
+  </div>
+</Base>
