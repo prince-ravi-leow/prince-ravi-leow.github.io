@@ -1,6 +1,6 @@
-# Prince Ravi Leow's personal academic website
+# My personal academic website
 
-Personal academic site of Prince Ravi Leow, built with [Astro](https://astro.build/).
+Built with [Astro](https://astro.build/).
 
 ## Requirements
 
