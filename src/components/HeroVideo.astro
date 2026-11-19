@@ -1,6 +1,5 @@
 ---
-import wide from "../assets/flow_vs_tracks_horiz.mp4?url";
-import tall from "../assets/flow_vs_tracks_vert.mp4?url";
+import demo from "../assets/tracking_demo.mp4?url";
 ---
 
 <figure class="hero-video">
@@ -9,16 +8,24 @@ import tall from "../assets/flow_vs_tracks_vert.mp4?url";
     loop
     muted
     playsinline
-    controls
-    aria-label="Three synchronised panels of broiler chicks in a pen: raw video, optical flow, and SAM 3.1 tracks of individual birds"
+    width="704"
+    height="576"
+    aria-label="Video clip tracked with PlayClass, with each subject annotated with coloured segmentation mask, bounding box and object id"
   >
-    <source src={tall} media="(max-width: 700px)" type="video/mp4" />
-    <source src={wide} type="video/mp4" />
+    <source src={demo} type="video/mp4" />
   </video>
+  <figcaption><slot /></figcaption>
 </figure>
 
 <script>
   const video = document.querySelector<HTMLVideoElement>(".hero-video video");
-  // Browsers only evaluate <source media> on load.
-  window.matchMedia("(max-width: 700px)").addEventListener("change", () => video?.load());
+  if (video) {
+    const gestures = ["touchend", "click", "keydown"];
+    const start = () => video.play().catch(() => {});
+    const stop = () => gestures.forEach((type) => document.removeEventListener(type, start));
+
+    gestures.forEach((type) => document.addEventListener(type, start));
+    video.addEventListener("playing", stop, { once: true });
+    start();
+  }
 </script>

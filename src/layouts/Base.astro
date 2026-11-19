@@ -1,5 +1,5 @@
 ---
-import "@fontsource-variable/montserrat";
+import "@fontsource-variable/quicksand";
 import "@fontsource/open-sans/400.css";
 import "@fontsource/open-sans/400-italic.css";
 import "@fontsource/open-sans/700.css";
@@ -8,11 +8,13 @@ import { getImage } from "astro:assets";
 import avatar from "../assets/avatar.png";
 
 interface Props {
-  title: string;
-  description: string;
+  frontmatter: {
+    title: string;
+    description: string;
+  };
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props.frontmatter;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const preview = await getImage({ src: avatar, format: "jpg" });
 const previewUrl = new URL(preview.src, Astro.site);

@@ -13,12 +13,7 @@ const links = [
   { icon: emailIcon, label: "Email", href: "mailto:prince.leow@sund.ku.dk" },
   { icon: githubIcon, label: "GitHub", href: "https://github.com/prince-ravi-leow" },
   { icon: linkedinIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/prince-ravi-leow" },
-  {
-    icon: scholarIcon,
-    label: "Scholar",
-    wideOnlyPrefix: "Google",
-    href: "https://scholar.google.com/citations?user=v0wjZzoAAAAJ&hl=en",
-  },
+  { icon: scholarIcon, label: "Scholar", href: "https://scholar.google.com/citations?user=v0wjZzoAAAAJ&hl=en" },
   { icon: orcidIcon, label: "ORCID", href: "https://orcid.org/0009-0008-8997-2020" },
 ];
 ---
@@ -34,16 +29,13 @@ const links = [
   />
   <div class="identity">
     <h1>Prince Ravi Leow</h1>
-    <p class="role">PhD student @ Section for Health Data Science & AI (University of Copenhagen)</p>
+    <div class="role"><slot /></div>
     <nav class="links" aria-label="Profiles and contact">
       {
-        links.map(({ icon, label, wideOnlyPrefix, href }) => (
+        links.map(({ icon, label, href }) => (
           <a href={href} target="_blank" rel="noopener noreferrer">
             <span class="icon" aria-hidden="true" set:html={icon.trim()} />
-            <span>
-              {wideOnlyPrefix && <span class="wide-only">{wideOnlyPrefix} </span>}
-              {label}
-            </span>
+            <span>{label}</span>
           </a>
         ))
       }
