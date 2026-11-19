@@ -25,8 +25,10 @@ npm run preview  # serves dist/ locally
 
 ## Layout
 
-- `src/pages/index.astro`: the page content
-- `src/components/`, `src/layouts/`: building blocks
-- `src/styles/global.css`: all styling
-- `src/assets/`: avatar and videos, optimised at build time
+- `src/pages/index.mdx`: all the page text, written in Markdown
+- `src/components/Masthead.astro`: photo, name and profile links
+- `src/components/HeroVideo.astro`: looping demo clip and caption
+- `src/layouts/Base.astro`: page shell, metadata, footer and light/dark switch
+- `src/styles/global.css`: all styling, including light and dark colours
+- `src/assets/`: avatar and demo clip
 - `public/`: files served as-is, such as `cv.pdf`

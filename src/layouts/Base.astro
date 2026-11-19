@@ -6,6 +6,8 @@ import "@fontsource/open-sans/700.css";
 import "../styles/global.css";
 import { getImage } from "astro:assets";
 import avatar from "../assets/avatar.png";
+import sunIcon from "bootstrap-icons/icons/sun.svg?raw";
+import moonIcon from "bootstrap-icons/icons/moon.svg?raw";
 
 interface Props {
   frontmatter: {
@@ -50,8 +52,19 @@ const websiteSchema = {
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <title>{title}</title>
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
   </head>
   <body>
+    <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode">
+      <span aria-hidden="true" set:html={sunIcon.trim()} />
+      <span class="track"><span class="thumb"></span></span>
+      <span aria-hidden="true" set:html={moonIcon.trim()} />
+    </button>
     <main class="home">
       <slot />
     </main>
@@ -59,5 +72,29 @@ const websiteSchema = {
       © {new Date().getFullYear()} Prince Ravi Leow · Built with{" "}
       <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>
     </footer>
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+      const system = window.matchMedia("(prefers-color-scheme: dark)");
+      const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : system.matches);
+      const sync = () => toggle?.setAttribute("aria-checked", String(isDark()));
+
+      toggle?.addEventListener("click", () => {
+        const dark = !isDark();
+        try {
+          // A choice that matches the device goes back to following the device.
+          if (dark === system.matches) {
+            delete root.dataset.theme;
+            localStorage.removeItem("theme");
+          } else {
+            root.dataset.theme = dark ? "dark" : "light";
+            localStorage.setItem("theme", root.dataset.theme);
+          }
+        } catch {}
+        sync();
+      });
+      system.addEventListener("change", sync);
+      sync();
+    </script>
   </body>
 </html>
