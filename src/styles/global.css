@@ -138,6 +138,42 @@ a:focus-visible {
   border-radius: 1rem;
 }
 
+.scroll-hint {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  translate: -50%;
+  color: var(--red);
+  padding: 0.3rem;
+  border-radius: 50%;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.scroll-hint.visible {
+  opacity: 1;
+}
+
+.scroll-hint svg {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-hint.visible svg {
+    animation: scroll-hint-bob 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll-hint-bob {
+  50% {
+    transform: translateY(0.35rem);
+  }
+}
+
 .home {
   display: grid;
   grid-template-columns:

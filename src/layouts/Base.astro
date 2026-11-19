@@ -8,6 +8,7 @@ import { getImage } from "astro:assets";
 import avatar from "../assets/avatar.png";
 import sunIcon from "bootstrap-icons/icons/sun.svg?raw";
 import moonIcon from "bootstrap-icons/icons/moon.svg?raw";
+import downIcon from "bootstrap-icons/icons/chevron-down.svg?raw";
 
 interface Props {
   frontmatter: {
@@ -72,6 +73,7 @@ const websiteSchema = {
       © {new Date().getFullYear()} Prince Ravi Leow · Built with{" "}
       <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>
     </footer>
+    <div class="scroll-hint" aria-hidden="true" set:html={downIcon.trim()} />
     <script>
       const root = document.documentElement;
       const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
@@ -95,6 +97,19 @@ const websiteSchema = {
       });
       system.addEventListener("change", sync);
       sync();
+
+      const hint = document.querySelector(".scroll-hint");
+      const show = setTimeout(() => {
+        if (window.scrollY < 8 && root.scrollHeight > window.innerHeight + 40) hint?.classList.add("visible");
+      }, 3000);
+      window.addEventListener(
+        "scroll",
+        () => {
+          clearTimeout(show);
+          hint?.classList.remove("visible");
+        },
+        { once: true, passive: true },
+      );
     </script>
   </body>
 </html>
