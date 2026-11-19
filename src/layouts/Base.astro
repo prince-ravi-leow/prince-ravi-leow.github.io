@@ -16,6 +16,13 @@ const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const preview = await getImage({ src: avatar, format: "jpg" });
 const previewUrl = new URL(preview.src, Astro.site);
+const siteName = "Prince Ravi Leow";
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: Astro.site,
+};
 ---
 
 <!doctype html>
@@ -30,7 +37,7 @@ const previewUrl = new URL(preview.src, Astro.site);
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Prince Ravi Leow" />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -39,6 +46,7 @@ const previewUrl = new URL(preview.src, Astro.site);
     <meta property="og:image:height" content={String(preview.attributes.height)} />
     <meta property="og:image:alt" content="Prince Ravi Leow standing next to a research poster" />
     <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <title>{title}</title>
   </head>
   <body>
