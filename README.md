@@ -19,9 +19,15 @@ npm run dev      # dev server with live reload at http://localhost:4321
 ## Build
 
 ```sh
-npm run build    # writes the static site to dist/
+npm run check    # type-checks the project
+npm run build    # type-checks, then writes the static site to dist/
 npm run preview  # serves dist/ locally
 ```
+
+## Deploy
+
+Pushing to `main` builds the site and publishes it to GitHub Pages
+(`.github/workflows/deploy.yml`). A failed type check stops the deploy.
 
 ## Layout
 
