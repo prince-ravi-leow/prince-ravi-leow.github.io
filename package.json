@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "dev:phone": "astro dev --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check"

@@ -16,6 +16,9 @@ npm install      # once, to install dependencies
 npm run dev      # dev server with live reload at http://localhost:4321
 ```
 
+To preview on a phone on the same network, run `npm run dev:phone` instead and
+open the "Network" address it prints.
+
 ## Build
 
 ```sh
