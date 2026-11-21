@@ -30,13 +30,15 @@ npm run preview  # serves dist/ locally
 ## Deploy
 
 Pushing to `main` builds the site and publishes it to GitHub Pages
-(`.github/workflows/deploy.yml`). A failed type check stops the deploy.
+(`.github/workflows/deploy.yml`). The workflow skips pushes that change only
+`README.md`, `.gitignore`, or both. A failed type check stops the deploy.
 
 ## Layout
 
-- `src/pages/index.mdx`: all the page text, written in Markdown
+- `src/pages/index.mdx`: main homepage content, written in MDX
 - `src/components/Masthead.astro`: photo, name and profile links
 - `src/components/HeroVideo.astro`: looping demo clip and caption
+- `src/components/ExternalLink.astro`: opens external links in a new tab and supports optional icons
 - `src/layouts/Base.astro`: page shell, metadata, footer and light/dark switch
 - `src/styles/global.css`: all styling, including light and dark colours
 - `src/assets/`: avatar and demo clip
