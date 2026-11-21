@@ -537,15 +537,12 @@ a:focus-visible {
   }
 
   .masthead .role {
+    width: 100%;
     font-size: 0.88rem;
   }
 
-  .masthead .role p {
-    text-wrap: balance;
-  }
-
   .masthead .role p + p {
-    font-size: inherit;
+    font-size: min(1em, 4.4vw);
   }
 
   .masthead .role p:first-child {
