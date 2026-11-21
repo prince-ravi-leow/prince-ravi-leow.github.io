@@ -8,6 +8,9 @@ import Masthead from "../components/Masthead.astro";
 import HeroVideo from "../components/HeroVideo.astro";
 import ExternalLink from "../components/ExternalLink.astro";
 
+import codeIcon from "bootstrap-icons/icons/github.svg?raw";
+import paperIcon from "bootstrap-icons/icons/file-earmark-text.svg?raw";
+
 export const components = { a: ExternalLink };
 
 <Masthead>
@@ -18,11 +21,9 @@ Section for Health Data Science & AI
 University of Copenhagen
 </Masthead>
 
-<h2 class="desktop-only">Bio</h2>
-
-I work on computer vision for animal behaviour and health. My recent work links poultry behaviour from video to health and welfare. The aim is an objective, early warning of disease and poor welfare from nothing more than a camera. 
-
 ## Research
+
+I develop and train machine learning models to recognise and measure bird behaviours linked to health and welfare from ordinary camera footage.
 
 <article>
 
@@ -30,8 +31,8 @@ I work on computer vision for animal behaviour and health. My recent work links 
 
 Presented at CV4Animals Workshop (CVPR 2026), joint first-author
 
-* [Code](https://github.com/sbhattlab/PlayClass)
-* [Paper](https://doi.org/10.48550/arXiv.2605.27304)
+* <ExternalLink class="link-pill" href="https://github.com/sbhattlab/PlayClass" icon={codeIcon}>Code</ExternalLink>
+* <ExternalLink class="link-pill" href="https://doi.org/10.48550/arXiv.2605.27304" icon={paperIcon}>Paper</ExternalLink>
 
 A computer vision pipeline that classifies play behaviour in chickens from video. Presented at the [CV4Animals Workshop](https://www.cv4animals.com/) and featured in [GitHub Octoverse 2026](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/). 
 
@@ -47,7 +48,7 @@ Individual chickens tracked and segmented with [`PlayClass`](https://github.com/
 
 Published at Royal Society Open Science, 2025, co-author
 
-* [Paper](https://doi.org/10.1098/rsos.250151)
+* <ExternalLink class="link-pill" href="https://doi.org/10.1098/rsos.250151" icon={paperIcon}>Paper</ExternalLink>
 
 We link *E. coli* infection in broiler chickens to changes in their behaviour using video footage. My talk on this work won [Best Lightning Talk at Health Data Science Day 2025](https://lnkd.in/p/exNUscXH).
 

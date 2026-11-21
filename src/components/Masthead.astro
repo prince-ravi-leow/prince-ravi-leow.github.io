@@ -40,7 +40,7 @@ const links = [
     <nav id="contact-links" class="links" aria-label="Profiles and contact">
       {
         links.map(({ icon, label, href }) => (
-          <a href={href} target="_blank" rel="noopener noreferrer">
+          <a class="link-pill" href={href} target="_blank" rel="noopener noreferrer">
             <span class="icon" aria-hidden="true" set:html={icon.trim()} />
             <span>{label}</span>
           </a>
