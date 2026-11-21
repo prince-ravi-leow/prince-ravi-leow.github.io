@@ -55,8 +55,7 @@ const websiteSchema = {
     <title>{title}</title>
     <script is:inline>
       try {
-        const theme = localStorage.getItem("theme");
-        if (theme) document.documentElement.dataset.theme = theme;
+        if (localStorage.getItem("theme") === "dark") document.documentElement.dataset.theme = "dark";
       } catch {}
     </script>
   </head>
@@ -77,25 +76,22 @@ const websiteSchema = {
     <script>
       const root = document.documentElement;
       const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
-      const system = window.matchMedia("(prefers-color-scheme: dark)");
-      const isDark = () => (root.dataset.theme ? root.dataset.theme === "dark" : system.matches);
+      const isDark = () => root.dataset.theme === "dark";
       const sync = () => toggle?.setAttribute("aria-checked", String(isDark()));
 
       toggle?.addEventListener("click", () => {
         const dark = !isDark();
         try {
-          // A choice that matches the device goes back to following the device.
-          if (dark === system.matches) {
+          if (dark) {
+            root.dataset.theme = "dark";
+            localStorage.setItem("theme", "dark");
+          } else {
             delete root.dataset.theme;
             localStorage.removeItem("theme");
-          } else {
-            root.dataset.theme = dark ? "dark" : "light";
-            localStorage.setItem("theme", root.dataset.theme);
           }
         } catch {}
         sync();
       });
-      system.addEventListener("change", sync);
       sync();
 
       const hint = document.querySelector(".scroll-hint");

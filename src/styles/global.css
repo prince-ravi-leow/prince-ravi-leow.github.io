@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --bg: light-dark(#fff, #17181b);
   --red: light-dark(#b74831, #e88d78);
   --red-soft: light-dark(#d77f6d, #b9604d);
@@ -17,10 +17,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
 }
 
 :root[data-theme="dark"] {
@@ -118,12 +114,6 @@ a:focus-visible {
 
 :root[data-theme="dark"] .theme-toggle .thumb {
   transform: translateX(1rem);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .thumb {
-    transform: translateX(1rem);
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
