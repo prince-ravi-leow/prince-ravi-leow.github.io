@@ -1,10 +1,13 @@
 ---
 import demo from "../assets/tracking_demo.mp4?url";
+import poster from "../assets/tracking-poster.webp";
 ---
 
 <figure class="hero-video">
   <video
-    autoplay
+    controls
+    preload="none"
+    poster={poster.src}
     loop
     muted
     playsinline
@@ -19,13 +22,32 @@ import demo from "../assets/tracking_demo.mp4?url";
 
 <script>
   const video = document.querySelector<HTMLVideoElement>(".hero-video video");
-  if (video) {
-    const gestures = ["touchend", "click", "keydown"];
-    const start = () => video.play().catch(() => {});
-    const stop = () => gestures.forEach((type) => document.removeEventListener(type, start));
+  if (video && "IntersectionObserver" in window) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const syncPlayback = () => {
+      if (!visible || document.hidden) {
+        video.pause();
+      } else if (!reducedMotion.matches) {
+        video.controls = false;
+        video.play().catch((error: DOMException) => {
+          if (error.name !== "AbortError") video.controls = true;
+        });
+      }
+    };
 
-    gestures.forEach((type) => document.addEventListener(type, start));
-    video.addEventListener("playing", stop, { once: true });
-    start();
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncPlayback();
+    });
+    observer.observe(video);
+    document.addEventListener("visibilitychange", syncPlayback);
+    reducedMotion.addEventListener("change", () => {
+      if (reducedMotion.matches) {
+        video.pause();
+        video.controls = true;
+      }
+      syncPlayback();
+    });
   }
 </script>

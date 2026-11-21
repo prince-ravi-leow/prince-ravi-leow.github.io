@@ -255,9 +255,7 @@ a:focus-visible {
 
 @media (prefers-reduced-motion: no-preference) {
   .masthead {
-    transition:
-      box-shadow 0.2s ease-out,
-      transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
   }
 }
 
@@ -275,9 +273,7 @@ a:focus-visible {
 
 @media (prefers-reduced-motion: no-preference) {
   .masthead .avatar {
-    transition:
-      transform 0.25s ease-out,
-      box-shadow 0.25s ease-out;
+    transition: transform 0.25s ease-out;
   }
 
   .masthead .avatar.lift {
@@ -358,7 +354,6 @@ a:focus-visible {
   .link-pill {
     transition:
       background-color 0.15s,
-      box-shadow 0.15s,
       scale 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.3);
   }
 
