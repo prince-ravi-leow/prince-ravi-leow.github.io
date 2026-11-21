@@ -72,7 +72,7 @@ const websiteSchema = {
       © {new Date().getFullYear()} Prince Ravi Leow · Built with{" "}
       <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>
     </footer>
-    <div class="scroll-hint" aria-hidden="true" set:html={downIcon.trim()} />
+    <button class="scroll-hint" type="button" tabindex="-1" aria-hidden="true" set:html={downIcon.trim()} />
     <script>
       const root = document.documentElement;
       const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
@@ -95,9 +95,14 @@ const websiteSchema = {
       sync();
 
       const hint = document.querySelector(".scroll-hint");
-      const show = setTimeout(() => {
-        if (window.scrollY < 8 && root.scrollHeight > window.innerHeight + 40) hint?.classList.add("visible");
-      }, 3000);
+      const mobile = window.matchMedia("(max-width: 700px)").matches;
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const show = setTimeout(
+        () => {
+          if (window.scrollY < 8 && root.scrollHeight > window.innerHeight + 40) hint?.classList.add("visible");
+        },
+        mobile ? 1000 : 3000,
+      );
       window.addEventListener(
         "scroll",
         () => {
@@ -106,6 +111,14 @@ const websiteSchema = {
         },
         { once: true, passive: true },
       );
+      hint?.addEventListener("click", () => {
+        const bio = document.querySelector(".home > p");
+        const bioTop = bio ? bio.getBoundingClientRect().top + window.scrollY : 0;
+        window.scrollTo({
+          top: Math.max(bioTop - window.innerHeight * 0.45, window.innerHeight * 0.3),
+          behavior: reducedMotion ? "auto" : "smooth",
+        });
+      });
     </script>
   </body>
 </html>

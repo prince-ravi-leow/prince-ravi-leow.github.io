@@ -4,6 +4,8 @@ import avatar from "../assets/avatar.png";
 import cvIcon from "bootstrap-icons/icons/person-vcard.svg?raw";
 import emailIcon from "bootstrap-icons/icons/envelope.svg?raw";
 import githubIcon from "bootstrap-icons/icons/github.svg?raw";
+import chevronIcon from "bootstrap-icons/icons/chevron-down.svg?raw";
+import menuIcon from "bootstrap-icons/icons/list.svg?raw";
 import linkedinIcon from "bootstrap-icons/icons/linkedin.svg?raw";
 import scholarIcon from "bootstrap-icons/icons/mortarboard.svg?raw";
 import orcidIcon from "../icons/orcid.svg?raw";
@@ -30,7 +32,12 @@ const links = [
   <div class="identity">
     <h1>Prince Ravi Leow</h1>
     <div class="role"><slot /></div>
-    <nav class="links" aria-label="Profiles and contact">
+    <button class="contact-toggle" type="button" aria-controls="contact-links">
+      <span aria-hidden="true" set:html={menuIcon.trim()} />
+      <span>Contact</span>
+      <span class="chevron" aria-hidden="true" set:html={chevronIcon.trim()} />
+    </button>
+    <nav id="contact-links" class="links" aria-label="Profiles and contact">
       {
         links.map(({ icon, label, href }) => (
           <a href={href} target="_blank" rel="noopener noreferrer">
@@ -42,3 +49,31 @@ const links = [
     </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".contact-toggle");
+  const setOpen = (open: boolean) => toggle?.setAttribute("aria-expanded", String(open));
+  setOpen(false);
+  toggle?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggle.dataset.ready = "";
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  document.addEventListener("click", () => setOpen(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+
+  const avatar = document.querySelector(".masthead .avatar");
+  avatar?.addEventListener("click", () => {
+    avatar.classList.add("lift");
+    setTimeout(() => avatar.classList.remove("lift"), 600);
+  });
+
+  const card = document.querySelector(".masthead");
+  card?.addEventListener("click", (event) => {
+    if ((event.target as Element).closest(".contact-toggle, .links")) return;
+    card.classList.add("lift");
+    setTimeout(() => card.classList.remove("lift"), 600);
+  });
+</script>
